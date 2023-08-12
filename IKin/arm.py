@@ -8,16 +8,12 @@ class ARM(DHRobot):
 
     def __init__(self):
 
-        # deg = np.pi/180
+        deg = np.pi/180
         mm = 1e-3
-        tool_offset = (103) * mm
-
-        flange = (107) * mm
-        # d7 = (58.4)*mm
         L = [
             RevoluteMDH(
                 a=0.0,
-                d=0.333,
+                d=0.0,
                 alpha=0.0,
                 qlim=np.array([-np.pi/2, np.pi/2]),
                 m=4.970684,
@@ -32,8 +28,8 @@ class ARM(DHRobot):
                 G=1,
             ),
             RevoluteMDH(
-                a=0.0,
-                d=0.0,
+                a=16.0,
+                d=16.0,
                 alpha=-np.pi / 2,
                 qlim=np.array([-np.pi/2, np.pi/2]),
                 m=0.646926,
@@ -48,9 +44,9 @@ class ARM(DHRobot):
                 G=1,
             ),
             RevoluteMDH(
-                a=0.0,
+                a=60.0,
                 d=0.0,
-                alpha=-np.pi / 2,
+                alpha=np.pi / 2,
                 qlim=np.array([-np.pi/2, np.pi/2]),
                 m=0.646926,
                 I=[
@@ -64,9 +60,9 @@ class ARM(DHRobot):
                 G=1,
             ),
             RevoluteMDH(
-                a=0.0,
+                a=129.0,
                 d=0.0,
-                alpha=-np.pi / 2,
+                alpha=0.0,
                 qlim=np.array([-np.pi/2, np.pi/2]),
                 m=0.646926,
                 I=[
