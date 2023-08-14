@@ -15,7 +15,7 @@ class ARM(DHRobot):
                 a=0.0,
                 d=0.0,
                 alpha=0.0,
-                qlim=np.array([-np.pi/2, np.pi/2]),
+                qlim=np.array([-np.pi/2, np.pi]),
                 m=4.970684,
                 I=[
                     7.03370e-01,
@@ -63,7 +63,8 @@ class ARM(DHRobot):
                 a=129.0,
                 d=0.0,
                 alpha=0.0,
-                qlim=np.array([-np.pi/2, np.pi/2]),
+                # qlim=np.array([-np.pi/2, np.pi/2]),
+                qlim=np.array([-10,10]),
                 m=0.646926,
                 I=[
                     7.96200e-03,
@@ -88,11 +89,7 @@ class ARM(DHRobot):
             # tool=tool,
         )
 
-        self.qr = np.array([0, -0.3, 0, -2.2])
-        self.qz = np.zeros(4)
-
-        self.addconfiguration("qr", self.qr)
-        self.addconfiguration("qz", self.qz)
+    
 
 
 if __name__ == "__main__":  # pragma nocover

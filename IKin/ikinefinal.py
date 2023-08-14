@@ -1,32 +1,32 @@
 import roboticstoolbox as rtb
 import numpy as np
+from spatialmath.pose3d import SE3
+from time import sleep
 
 import arm
-
 Arm = arm.ARM().ets()
 solver = rtb.IK_NR(pinv=True)
 
-# # Define the desired end-effector pose
-# Tep = Arm.fkine([0, 0.3, 0, -2.2])
-# print(Tep)
-# print(Tep.shape)
+# Define the desired end-effector pose
+Tep = Arm.fkine([np.pi/2, np.pi/2, np.pi/2, np.pi/2])
+print("Tep:\n",Tep)
 
-# # Solve for the joint coordinates
-# solution = solver.solve(Arm, Tep)
-# print("IK solution:\n", solution)
+# Solve for the joint coordinates
+solution = solver.solve(Arm, Tep)
+print("IK solution:\n", solution)
 
-# desired_pos = np.array([[1,0,0,5],
-#                         [0,1,0,1],
-#                         [0,0,1,0],
-# #                         [0,0,0,1]])
-# desired_pos = np.array([[  -0.5622,    0.7724,    0.2955,    196.6  ],
-#                         [  -0.8085,   -0.5885,    0,        16    ],
-#                         [   0.1739,   -0.2389,    0.9553 ,  -55.85 ],
-#                         [   0,         0 ,        0 ,       1     ] ])
-# print("desired :\n",desired_pos)
+print("****************************")
 
-# solution = solver.solve(Arm, desired_pos)
-# print("IK solution:\n", solution)
+desired_pos = np.array([[1.0,0.0,0.0,-145.0],
+                        [0.0,0.0,1.0,16.0],
+                        [0.0,1.0,0.0,-60.0],
+                        [0.0,0.0,0.0,1.0]])
+desired_pos = SE3(desired_pos)
+print("desired :\n",desired_pos)
 
-# Tep = Arm.fkine(solution)
-# print("Tep:\n",Tep)
+solution = solver.solve(Arm, desired_pos)
+print("IK solution:\n", solution)
+
+##plot
+# Arm.plot(solution.q)
+# sleep(10)
