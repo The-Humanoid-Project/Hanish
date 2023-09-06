@@ -21,12 +21,13 @@ desired_pos = np.array([[0.0,   1.0,    0.0,   -145.0],
                         [0.0,   0.0,    1.0,    16.0],
                         [1.0,   0.0,    0.0,   -60.0],
                         [0.0,   0.0,    0.0,    1.0]])
-# desired_pos = SE3(desired_pos)
-# print("desired :\n",desired_pos)
+desired_pos = SE3(desired_pos)
+print("desired :\n",desired_pos)
 
-# solution = solver.solve(Arm, desired_pos)
-# print("IK solution:\n", solution)
+solution = solver.solve(Arm, desired_pos)
+print("IK solution:\n", solution)
 
 #plot
-Arm.plot(np.zeros(4), block=True)
+# Arm.plot(np.zeros(4), block=True)
+Arm.plot(solution.q, block=True)
 
